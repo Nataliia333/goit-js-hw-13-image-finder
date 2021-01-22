@@ -18,3 +18,9 @@ body {
    */
   background-image: url('./images/bg-pattern.png');
 }
+
+.gallery {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+}
