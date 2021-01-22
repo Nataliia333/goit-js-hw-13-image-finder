@@ -10,28 +10,30 @@ const apiService = new ApiService();
 
 refs.searchForm.addEventListener('submit', onSearch);
   
-function onSearch(event) {
-    event.preventDefault();
+function onSearch(e) {
+    e.preventDefault();
 
-    const form = event.currentTarget;
-    apiService.query = form.elements.query.value;
+    // const form = event.currentTarget;
+    apiService.query = e.currentTarget.elements.query.value;
 
     apiService.resetPage();
     fetchCard();
-    clearCards();
+    // clearCardList();
     
 }
 
 function fetchCard() {
 apiService.fetchCard().then(data=> {
    cardsMarkup(data);
+// console.log(data)
+   
    });
 }
       
-function cardsMarkup(hits) {
-refs.cardList.insertAdjacentHTML('beforeend', cardTpl(hits));
+function cardsMarkup(data) {
+refs.cardList.insertAdjacentHTML('beforeend', cardTpl(data));
 }
       
-function clearCards() {
-refs.cardList.innerHTML = '';
-}
+// function clearCardList() {
+// refs.cardList.innerHTML = '';
+// }

@@ -1,14 +1,5 @@
 const apiKey = '19964134-f54b1836ef9c2cc5adbbfd779';
 
-// function fetchCard(searchQuery, page) {
-//    const url = `https://pixabay.com/api/?image_type=photo&orientation=horizontal&q=${searchQuery}&page=${page}&per_page=12&key=${apiKey}`;
-//    return fetch(url)
-//      .then(res => res.json())
-//      .then (({hits}) => hits);
-//     };
-// export default fetchCard;
-
-
 export default class ApiService {
    constructor() {
       this.searchQuery = '';
@@ -19,10 +10,10 @@ export default class ApiService {
     const url = `https://pixabay.com/api/?image_type=photo&orientation=horizontal&q=${this.searchQuery}&page=${this.page}&per_page=12&key=${apiKey}`;
     return fetch(url)
       .then(res => res.json())
-      .then (({hits}) => {
+      .then(({ hits, totalHits }) => {
          this.incrementPage();
-         return hits;
-      });
+         return { hits, totalHits };
+       });
    };
 
  incrementPage() {
@@ -42,3 +33,10 @@ export default class ApiService {
  }
 }
  
+// function fetchCard(searchQuery, page) {
+//    const url = `https://pixabay.com/api/?image_type=photo&orientation=horizontal&q=${searchQuery}&page=${page}&per_page=12&key=${apiKey}`;
+//    return fetch(url)
+//      .then(res => res.json())
+//      .then (({hits}) => hits);
+//     };
+// export default fetchCard;
