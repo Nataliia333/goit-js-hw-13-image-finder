@@ -19,8 +19,51 @@ body {
   background-image: url('./images/bg-pattern.png');
 }
 
+img {
+  display: block;
+  max-width: 90%;
+  height: auto;
+}
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  padding: 8px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  
+}
+
+
 .gallery {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 90%;
+}
+
+.stats-item {
+  font-size: 10px;
+  margin-top: 5px;
+  margin-right: 10px;
+}
+
+.material-items {
+  height: 25px;
+  width: 25px;
+  color: blue;
+}
+
+.load {
+  display: block;
+  margin: 2% auto;
+  cursor: pointer;
+  border-radius: 5px;
+  outline: none;
 }
