@@ -5,6 +5,11 @@ import refs from './js/refs';
 import apiService from './js/apiService.js';
 // import debounce from 'lodash.debounce';
 
+// const loadMoreBtn = new LoadMoreBtn({
+//    selector: 'button[data-action="load-more"]',
+//    hidden: true,
+//  });
+
 refs.searchForm.addEventListener('submit', onSearch);
   
 function onSearch(event) {
@@ -16,6 +21,7 @@ function onSearch(event) {
     apiService.resetPage();
     fetchCardImage();
     clearCardList();
+    form.reset();
     
 }
 
@@ -23,8 +29,7 @@ function fetchCardImage() {
 apiService.fetchCard().then(hits=> {
    cardsMarkup(hits);
 // console.log(data)
-   
-   });
+ });
 }
       
 function cardsMarkup(hits) {
@@ -34,6 +39,12 @@ refs.cardList.insertAdjacentHTML('beforeend', cardTpl(hits));
 function clearCardList() {
 refs.cardList.innerHTML = '';
 }
+
+refs.loadMoreBtn.addEventListener('click', () => {
+   apiService.fetchCard().then(hits=> {
+      cardsMarkup(hits);
+});
+});
 
 // ************
 

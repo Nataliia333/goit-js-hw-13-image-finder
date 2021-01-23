@@ -1,7 +1,7 @@
 const refs = {
     searchForm: document.querySelector('.search-form'),
     cardList: document.querySelector('.gallery'),
-    btn: document.querySelector('.load'),
+    loadMoreBtn: document.querySelector('[data-action="load-more"]'),
 }
 export default refs;
 
